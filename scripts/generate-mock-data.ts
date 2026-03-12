@@ -49,8 +49,6 @@ for (let i = 0; i < NUM_PEOPLE; i++) {
     team: i < 8 ? faker.helpers.arrayElement(TEAMS) : "",
     organization: org,
     grade: faker.helpers.arrayElement(GRADES),
-    qrCodeUrl: `https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=${encodeURIComponent(email)}`,
-    roomNumber: faker.helpers.arrayElement(ROOMS),
   });
 }
 
@@ -131,9 +129,27 @@ for (let i = 0; i < NUM_RESOURCES; i++) {
 
 writeFileSync(join(OUT_DIR, "resources.csv"), Papa.unparse(resources));
 
+// Generate room assignments
+const roomAssignments = people.map((p) => ({
+  email: p.email,
+  roomNumber: faker.helpers.arrayElement(ROOMS),
+}));
+
+writeFileSync(join(OUT_DIR, "room-assignments.csv"), Papa.unparse(roomAssignments));
+
+// Generate QR codes
+const qrCodes = people.map((p) => ({
+  email: p.email,
+  qrCodeUrl: `https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=${encodeURIComponent(p.email)}`,
+}));
+
+writeFileSync(join(OUT_DIR, "qr-codes.csv"), Papa.unparse(qrCodes));
+
 console.log(`Generated mock data in ${OUT_DIR}:`);
 console.log(`  - people.csv (${people.length} rows)`);
 console.log(`  - schedule-events.csv (${events.length} rows)`);
 console.log(`  - schedule-assignments.csv (${assignments.length} rows)`);
 console.log(`  - announcements.csv (${announcements.length} rows)`);
 console.log(`  - resources.csv (${resources.length} rows)`);
+console.log(`  - room-assignments.csv (${roomAssignments.length} rows)`);
+console.log(`  - qr-codes.csv (${qrCodes.length} rows)`);

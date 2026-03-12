@@ -1,6 +1,6 @@
 interface DataTableProps {
   headers: readonly string[];
-  rows: Record<string, string>[];
+  rows: any;
   onRemove?: (index: number) => void;
 }
 
