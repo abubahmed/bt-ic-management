@@ -1,0 +1,11 @@
+name,email,phone,team,organization,grade,qrCodeUrl,roomNumber
+Violet Yundt,Violet_Yundt@stanforduniversity.edu,(432) 904-5369,attendee,Stanford University,Freshman,https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=Violet_Yundt%40stanforduniversity.edu,201
+Walter Kovacek,Walter_Kovacek@uchicago.edu,(525) 642-4930,attendee,UChicago,Freshman,https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=Walter_Kovacek%40uchicago.edu,201
+Rubye Wolf,Rubye.Wolf@princetonuniversity.edu,(943) 765-5096,attendee,Princeton University,Senior,https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=Rubye.Wolf%40princetonuniversity.edu,102
+Heidi Gleichner,Heidi.Gleichner@uchicago.edu,(828) 792-1288,attendee,UChicago,Junior,https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=Heidi.Gleichner%40uchicago.edu,502
+Leonard Moore,Leonard.Moore93@rutgers.edu,(943) 766-5496,tech,Rutgers,Junior,https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=Leonard.Moore93%40rutgers.edu,502
+Charlene Predovic,Charlene.Predovic@cornelluniversity.edu,(823) 591-4775,tech,Cornell University,Junior,https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=Charlene.Predovic%40cornelluniversity.edu,201
+May Cruickshank,May.Cruickshank@uva.edu,(768) 391-7775,logistics,UVA,Freshman,https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=May.Cruickshank%40uva.edu,102
+Vicki Stokes,Vicki_Stokes54@columbiauniversity.edu,(791) 488-6911,tech,Columbia University,Freshman,https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=Vicki_Stokes54%40columbiauniversity.edu,402
+Abel O'Keefe-Stehr,Abel.OKeefe-Stehr@stanforduniversity.edu,(501) 302-8010,,Stanford University,Senior,https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=Abel.OKeefe-Stehr%40stanforduniversity.edu,501
+Santa Lehner,Santa.Lehner44@stanforduniversity.edu,(502) 387-6213,,Stanford University,Junior,https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=Santa.Lehner44%40stanforduniversity.edu,302

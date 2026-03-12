@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useRef } from "react";
+import Papa from "papaparse";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
 import SectionHeading from "../components/staff/SectionHeading";
@@ -10,17 +11,17 @@ import EmptyState from "../components/staff/EmptyState";
 
 /* ─── Types ─── */
 interface Person {
-  fullName: string;
+  name: string;
   email: string;
   phone: string;
-  role: string;
-  subteam: string;
-  school: string;
+  team: string;
+  organization: string;
   grade: string;
-  company: string;
+  qrCodeUrl: string;
+  roomNumber: string;
 }
 
-const PERSON_HEADERS = ["fullName", "email", "phone", "role", "subteam", "school", "grade", "company"] as const;
+const PERSON_HEADERS = ["name", "email", "phone", "team", "organization", "grade", "qrCodeUrl", "roomNumber"] as const;
 
 const SECTIONS = [
   { id: "people", label: "People & Access" },
@@ -35,23 +36,12 @@ type SectionId = (typeof SECTIONS)[number]["id"];
 
 /* ─── CSV helpers ─── */
 function parseCSV(text: string): Person[] {
-  const lines = text.trim().split("\n");
-  if (lines.length < 2) return [];
-  const headers = lines[0].split(",").map((h) => h.trim().replace(/^"|"$/g, ""));
-  return lines.slice(1).map((line) => {
-    const values = line.split(",").map((v) => v.trim().replace(/^"|"$/g, ""));
-    const person: Record<string, string> = {};
-    headers.forEach((header, i) => {
-      person[header] = values[i] || "";
-    });
-    return person as unknown as Person;
-  });
+  const result = Papa.parse<Person>(text, { header: true, skipEmptyLines: true });
+  return result.data;
 }
 
 function exportToCSV(people: Person[]) {
-  const header = PERSON_HEADERS.join(",");
-  const rows = people.map((p) => PERSON_HEADERS.map((h) => `"${p[h] || ""}"`).join(","));
-  const csv = [header, ...rows].join("\n");
+  const csv = Papa.unparse(people, { columns: [...PERSON_HEADERS] });
   const blob = new Blob([csv], { type: "text/csv" });
   const url = URL.createObjectURL(blob);
   const a = document.createElement("a");
